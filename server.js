@@ -5,7 +5,7 @@ let MongoClient = require('mongodb').MongoClient;
 let bodyParser = require('body-parser');
 let app = express();
 require("dotenv").config();
-const mongoUrl ="mongodb://admin:password@localhost:27017"; //when running as a container replace the url with PROCESS.env.MONGO_URL
+const mongoUrl = PROCESS.env.MONGO_URL || "mongodb://admin:password@localhost:27017"; //when running as a container replace the url with PROCESS.env.MONGO_URL
 
 app.use(bodyParser.urlencoded({
   extended: true
