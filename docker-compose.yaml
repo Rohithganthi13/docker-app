@@ -1,4 +1,12 @@
 services:
+  app:
+    build: .
+    image: ${ECR_REGISTRY}/docker-demo-app:${APP_VERSION:-latest}
+    ports:
+      - 3000:3000
+    env_file: .env
+    depends_on:
+      - mongodb
   mongodb:
     image: mongo
     ports:
