@@ -68,3 +68,18 @@ Step 5: access the nodejs application from browser
     docker build -t my-app:1.0 .       
     
 The dot "." at the end of the command denotes location of the Dockerfile.
+
+
+
+     Command	                    What it does
+docker compose build app	  Build the app image only
+docker compose push app	      Push the app image to ECR
+docker compose up	          Start all services (run containers)
+docker compose up --build	  Rebuild, then start everything
+
+docker compose push app
+   → resolve image: name  (registry host + repo + tag)
+   → auth to that host (token from `docker login`)
+   → for each layer: "already there?" → skip or upload (by SHA256)
+   → upload config
+   → upload manifest under tag  ← image now exists in ECR
